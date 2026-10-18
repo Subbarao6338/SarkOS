@@ -28,6 +28,7 @@
 		"@prozilla-os/ball-maze": "^1.0.9",
 		"@prozilla-os/logic-sim": "workspace:*",
 		"@prozilla-os/minesweeper": "^1.0.9",
+		"@prozilla-os/paint": "workspace:*",
 		"@prozilla-os/skins": "workspace:*",
 		"@prozilla-os/wordle": "^1.2.4",
 		"prozilla-os": "workspace:*",

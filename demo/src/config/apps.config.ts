@@ -1,5 +1,6 @@
 import { AppsConfig, browser, calculator, fileExplorer, mediaViewer, settings, terminal, textEditor, appCenter, codeEditor } from "prozilla-os";
 import { NAME } from "./branding.config";
+import { paint } from "@prozilla-os/paint";
 import { wordle } from "@prozilla-os/wordle";
 import { ballMaze } from "@prozilla-os/ball-maze";
 import { minesweeper } from "@prozilla-os/minesweeper";
@@ -79,5 +80,9 @@ export const appsConfig = new AppsConfig({
 		logicSim.setName("Logic Sim")
 			.setDescription("Create digital logic circuits using the online simulator.")
 			.setIconUrl("/assets/apps/icons/logic-sim.svg"),
+		paint.setName("Paint")
+			.setDescription("Draw and create digital paintings in ProzillaOS.")
+			.setIconUrl("/assets/apps/icons/media-viewer.svg")
+			.setShowDesktopIcon(true),
 	],
 });
