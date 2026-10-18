@@ -139,7 +139,8 @@ export function Calculator({ active }: WindowProps) {
 					break;
 				case "Backspace":
 					if (input != null && input.length > 0) {
-						setInput(input.slice(0, -1));
+						const newInput = input.slice(0, -1);
+						setInput(newInput === "" || newInput === "-" ? "0" : newInput);
 					}
 					break;
 			}
