@@ -11,7 +11,7 @@ export interface VirtualDriveConfigOptions {
 	saveData: false | {
 		/**
 		 * Enables compression of stored items.
-		 * @default false
+		 * @default true
 		 */
 		enableCompression: boolean;
 
@@ -92,7 +92,7 @@ export class VirtualDriveConfig {
 		const { saveData, defaultData } = options;
 
 		this.saveData = saveData ?? {
-			enableCompression: false,
+			enableCompression: true,
 			prefix: "pos-",
 			migrations: [["data", VirtualDriveStorage.KEY]],
 		};
