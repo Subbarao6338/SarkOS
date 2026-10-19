@@ -90,3 +90,15 @@
 .Bookmarks {
 	height: calc(var(--header-height) - var(--nav-bar-height));
 }
+
+@media (max-width: 600px) {
+	.NavBar {
+		gap: 0.5rem;
+		padding: 0.75rem 0.5rem;
+	}
+
+	.SearchBar {
+		font-size: 0.8em;
+		padding: 0.2rem 0.4rem;
+	}
+}

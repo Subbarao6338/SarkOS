@@ -9,6 +9,7 @@ export interface InstallViewProps {
 
 export function InstallView({ registry }: InstallViewProps) {
 	const [input, setInput] = useState("");
+	const [appName, setAppName] = useState("");
 	const [exportName, setExportName] = useState("");
 	const [status, setStatus] = useState<{ type: "success" | "error"; message: string } | null>(null);
 	const [installing, setInstalling] = useState(false);
@@ -22,6 +23,8 @@ export function InstallView({ registry }: InstallViewProps) {
 
 		try {
 			const options: LoadAppOptions = {};
+			if (appName.trim())
+				options.name = appName.trim();
 			if (exportName.trim())
 				options.exportName = exportName.trim();
 
@@ -29,6 +32,7 @@ export function InstallView({ registry }: InstallViewProps) {
 
 			setStatus({ type: "success", message: `Installed "${entry.name}" (${entry.id})` });
 			setInput("");
+			setAppName("");
 			setExportName("");
 		} catch (error) {
 			setStatus({ type: "error", message: error instanceof Error ? error.message : String(error) });
@@ -41,22 +45,33 @@ export function InstallView({ registry }: InstallViewProps) {
 		<div className={styles.Option}>
 			<p className={styles.Label}>Install an app</p>
 			<p className={utilStyles.TextLight}>
-				Install an app from an npm package or a direct URL.
+				Install any web app from a URL or an npm package.
 			</p>
 		</div>
 		<div className={styles.Option}>
-			<p className={styles.Label}>Package</p>
+			<p className={styles.Label}>Package or URL</p>
 			<input
 				className={styles.Input}
 				type="text"
-				placeholder="@scope/package or https://example.com/app.js"
+				placeholder="https://example.com or @scope/package"
 				value={input}
 				onChange={(e) => setInput(e.target.value)}
 				disabled={installing}
 			/>
 		</div>
 		<div className={styles.Option}>
-			<p className={styles.Label}>Export name</p>
+			<p className={styles.Label}>App Name (Optional for Web Apps)</p>
+			<input
+				className={styles.Input}
+				type="text"
+				placeholder={installing ? "" : "Auto-detected from URL"}
+				value={appName}
+				onChange={(e) => setAppName(e.target.value)}
+				disabled={installing}
+			/>
+		</div>
+		<div className={styles.Option}>
+			<p className={styles.Label}>Export name (Optional for JS modules)</p>
 			<input
 				className={styles.Input}
 				type="text"
