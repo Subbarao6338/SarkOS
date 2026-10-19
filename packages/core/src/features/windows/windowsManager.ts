@@ -25,6 +25,8 @@ export interface WindowOptions {
 	[key: string]: unknown;
 }
 
+export type SnapLayout = "left" | "right" | "topLeft" | "topRight" | "bottomLeft" | "bottomRight" | "maximize";
+
 /**
  * Manages the states of windows.
  */
@@ -120,7 +122,51 @@ export class WindowsManager {
 
 		this.updateWindows(this.windows);
 		return this.windows[id];
-		// console.log(this);
+	}
+
+	/**
+	 * Snaps a window to an edge/corner layout for split-screen / quad view.
+	 */
+	snapWindow(windowId: string, layout: SnapLayout) {
+		const win = this.windows[windowId];
+		if (!win) return;
+
+		const screenW = window.innerWidth;
+		const screenH = window.innerHeight - this.#systemManager.taskbarConfig.height;
+
+		win.fullscreen = false;
+
+		switch (layout) {
+			case "left":
+				win.position = new Vector2(0, 0);
+				win.size = new Vector2(screenW / 2, screenH);
+				break;
+			case "right":
+				win.position = new Vector2(screenW / 2, 0);
+				win.size = new Vector2(screenW / 2, screenH);
+				break;
+			case "topLeft":
+				win.position = new Vector2(0, 0);
+				win.size = new Vector2(screenW / 2, screenH / 2);
+				break;
+			case "topRight":
+				win.position = new Vector2(screenW / 2, 0);
+				win.size = new Vector2(screenW / 2, screenH / 2);
+				break;
+			case "bottomLeft":
+				win.position = new Vector2(0, screenH / 2);
+				win.size = new Vector2(screenW / 2, screenH / 2);
+				break;
+			case "bottomRight":
+				win.position = new Vector2(screenW / 2, screenH / 2);
+				win.size = new Vector2(screenW / 2, screenH / 2);
+				break;
+			case "maximize":
+				win.fullscreen = true;
+				break;
+		}
+
+		this.updateWindows(this.windows);
 	}
 
 	/**
@@ -167,7 +213,6 @@ export class WindowsManager {
 		delete this.windows[windowId];
 
 		this.updateWindows(this.windows);
-		// console.log(this);
 	}
 
 	/**

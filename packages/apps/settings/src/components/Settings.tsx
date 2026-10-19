@@ -1,11 +1,12 @@
 import styles from "./Settings.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleInfo, faHardDrive, faPalette, faShapes } from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo, faCloud, faHardDrive, faPalette, faShapes } from "@fortawesome/free-solid-svg-icons";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import { AppearanceSettings } from "./tabs/appearance/AppearanceSettings";
 import { AboutSettings } from "./tabs/AboutSettings";
 import { StorageTab } from "./tabs/StorageSettings";
 import { AppsSettings } from "./tabs/apps/AppsSettings";
+import { CloudSyncTab } from "./tabs/CloudSyncTab";
 import { utilStyles, WindowProps } from "@prozilla-os/core";
 
 export interface SettingsProps extends WindowProps {
@@ -34,6 +35,10 @@ export function Settings({ tab }: SettingsProps) {
 					<p className={utilStyles.TextSemibold}>Storage</p>
 				</Tab>
 				<Tab className={styles.TabButton} tabIndex="0">
+					<FontAwesomeIcon icon={faCloud}/>
+					<p className={utilStyles.TextSemibold}>Cloud Sync</p>
+				</Tab>
+				<Tab className={styles.TabButton} tabIndex="0">
 					<FontAwesomeIcon icon={faCircleInfo}/>
 					<p className={utilStyles.TextSemibold}>About</p>
 				</Tab>
@@ -46,6 +51,9 @@ export function Settings({ tab }: SettingsProps) {
 			</TabPanel>
 			<TabPanel className={styles.TabPanel}>
 				<StorageTab/>
+			</TabPanel>
+			<TabPanel className={styles.TabPanel}>
+				<CloudSyncTab/>
 			</TabPanel>
 			<TabPanel className={styles.TabPanel}>
 				<AboutSettings/>

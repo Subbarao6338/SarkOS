@@ -4,6 +4,15 @@ import { NAME } from "./config/branding.config";
 import { Main } from "./Main";
 import { ASCII_LOGO } from "prozilla-os";
 
+// Register Service Worker for PWA support
+if ("serviceWorker" in navigator && process.env.NODE_ENV === "production") {
+	window.addEventListener("load", () => {
+		navigator.serviceWorker.register("/sw.js").catch((err) => {
+			console.warn("ServiceWorker registration failed: ", err);
+		});
+	});
+}
+
 // Render app
 const root = createRoot(document.getElementById("root") as Container);
 root.render(<React.StrictMode><Main/></React.StrictMode>);

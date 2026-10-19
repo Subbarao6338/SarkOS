@@ -10,7 +10,7 @@ import { RadioAction } from "../actions/actions/RadioAction";
 import { Divider } from "../actions/actions/Divider";
 import { Share } from "../modals/share/Share";
 import { ModalProps } from "../modals/ModalView";
-import { reloadViewport, ModalsManager, AppsConfig, Settings } from "../../features";
+import { reloadViewport, ModalsManager, AppsConfig, Settings, CommandPalette } from "../../features";
 import { VirtualFile } from "../../features/virtual-drive/file";
 import { VirtualFolder, VirtualFolderLink } from "../../features/virtual-drive/folder";
 import { useSettingsManager, useWindowsManager, useVirtualRoot, useWindowedModal, useContextMenu, useSystemManager } from "../../hooks";
@@ -20,7 +20,7 @@ import { useClassNames } from "../../hooks";
 import { isValidInteger, Vector2 } from "@prozilla-os/shared";
 
 /**
- * Component that renders the wallpaper and desktop icons.
+ * Component that renders the wallpaper, desktop icons, and OS global utilities like Command Palette.
  */
 export const Desktop = memo(() => {
 	const { desktopConfig, skin, appsConfig } = useSystemManager();
@@ -174,6 +174,7 @@ export const Desktop = memo(() => {
 	const wallpaperClassName = useClassNames([styles.Wallpaper], "Desktop", "Wallpaper");
 
 	return <>
+		<CommandPalette />
 		<ShortcutsListener/>
 		<div
 			className={useClassNames([styles.Desktop], "Desktop")}

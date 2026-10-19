@@ -6,5 +6,6 @@ export * from "./shellEnvironment";
 export * from "./shellInterpreter";
 export * from "./shellParser";
 export * from "./arithmetic/arithmeticParser";
+export * from "./commandPalette";
 
 export * as ShellAST from "./shellAST";
