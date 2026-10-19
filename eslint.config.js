@@ -14,7 +14,8 @@ export default defineConfig(
 		"**/dist/**/*",
 		"**/node_modules/**/*",
 		"**/vite.config.ts.timestamp-*.mjs",
-		"docs/.vitepress/cache/**/*"
+		"docs/.vitepress/cache/**/*",
+		"**/public/**/*",
 	]),
 	{
 		extends: [
