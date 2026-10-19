@@ -54,3 +54,10 @@
 	align-items: center;
 	height: 100%;
 }
+
+@media (max-width: 600px) {
+	.Taskbar {
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+}

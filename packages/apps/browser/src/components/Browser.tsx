@@ -1,8 +1,8 @@
 import { ChangeEventHandler, KeyboardEventHandler, useEffect, useRef, useState } from "react";
 import styles from "./Browser.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretLeft, faCaretRight, faHome, faRotateRight } from "@fortawesome/free-solid-svg-icons";
-import { useHistory, WebView, WindowProps } from "@prozilla-os/core";
+import { faCaretLeft, faCaretRight, faHome, faRotateRight, faDownload } from "@fortawesome/free-solid-svg-icons";
+import { useHistory, useSystemManager, WebView, WindowProps } from "@prozilla-os/core";
 import { HOME_URL, SEARCH_URL } from "../constants/browser.const";
 import { isValidUrl } from "@prozilla-os/shared";
 
@@ -15,6 +15,8 @@ export function Browser({ url: startUrl = HOME_URL, focus }: BrowserProps) {
 	const [input, setInput] = useState(startUrl);
 	const { history, pushState, stateIndex, undo, redo, undoAvailable, redoAvailable } = useHistory(startUrl);
 	const ref = useRef<HTMLIFrameElement>(null);
+	const systemManager = useSystemManager();
+	const [isInstalling, setIsInstalling] = useState(false);
 
 	useEffect(() => {
 		if (history.length === 0)
@@ -38,6 +40,20 @@ export function Browser({ url: startUrl = HOME_URL, focus }: BrowserProps) {
 		setUrl(newUrl);
 		setInput(newUrl);
 		pushState(newUrl);
+	};
+
+	const installCurrentApp = async () => {
+		if (!isValidUrl(url) || isInstalling || systemManager == null)
+			return;
+
+		setIsInstalling(true);
+		try {
+			await systemManager.appsConfig.installApp(url, systemManager);
+		} catch (error) {
+			console.error("Failed to install app:", error);
+		} finally {
+			setIsInstalling(false);
+		}
 	};
 
 	const onInputChange = (event: Event) => {
@@ -102,6 +118,15 @@ export function Browser({ url: startUrl = HOME_URL, focus }: BrowserProps) {
 					onChange={onInputChange as unknown as ChangeEventHandler}
 					onKeyDown={onKeyDown as unknown as KeyboardEventHandler}
 				/>
+				<button
+					title="Install page as app"
+					tabIndex={0}
+					className={styles.IconButton}
+					onClick={() => { void installCurrentApp(); }}
+					disabled={isInstalling || !isValidUrl(url)}
+				>
+					<FontAwesomeIcon icon={faDownload}/>
+				</button>
 			</div>
 			<div className={styles.Bookmarks}>
 

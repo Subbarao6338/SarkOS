@@ -126,14 +126,14 @@ export class AppRegistry {
 				this.appsConfig.emit(AppsConfig.APPS_CHANGE_EVENT);
 			} else {
 				const source = existingEntry.packageName ?? target;
-				const exportName = existingEntry.exportName;
-				const app = await loadApp(source, { exportName, ...options });
+				const exportName = options?.exportName ?? existingEntry.exportName;
+				const app = await loadApp(source, { ...options, exportName });
 
 				app.setInstalled(true);
 				this.appsConfig.addApp(app, this.systemManager);
 				Object.assign(existingEntry, createEntry(app), {
 					packageName: source,
-					exportName: options?.exportName ?? exportName,
+					exportName,
 				});
 			}
 
