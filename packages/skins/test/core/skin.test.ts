@@ -1,5 +1,6 @@
 import { describe, expect } from "vitest";
 import { Skin } from "../../src/core";
+import { Theme } from "../../src/types";
 import { test } from "..";
 
 const DEFAULT_BASE_URL = "https://os.prozilla.dev/";
@@ -10,6 +11,21 @@ describe("Skin", () => {
 		["asset/test.svg", "{base}asset/test.svg"],
 		["https://os.prozilla.dev/asset/test.svg", "https://os.prozilla.dev/asset/test.svg"],
 	]);
+
+	test("Theme enum contains all themes including Expressive and Light themes", () => {
+		expect(Theme.Dark).toBe(0);
+		expect(Theme.Light).toBe(1);
+		expect(Theme.Cherry).toBe(2);
+		expect(Theme.Mango).toBe(3);
+		expect(Theme.Aqua).toBe(4);
+		expect(Theme.Grape).toBe(5);
+		expect(Theme.Expressive).toBe(6);
+		expect(Theme.ExpressiveLight).toBe(7);
+		expect(Theme.CherryLight).toBe(8);
+		expect(Theme.MangoLight).toBe(9);
+		expect(Theme.AquaLight).toBe(10);
+		expect(Theme.GrapeLight).toBe(11);
+	});
 
 	test("with default options has default base URL", () => {
 		const skin = new Skin();

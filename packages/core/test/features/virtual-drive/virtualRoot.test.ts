@@ -1,5 +1,5 @@
 import { assert, expect } from "vitest";
-import { VirtualRoot } from "../../../src/features";
+import { VirtualDriveConfig, VirtualRoot } from "../../../src/features";
 import { MockSystemManager } from "../system/system.utils";
 import { MockVirtualRoot } from "./virtualDrive.utils";
 import { test } from "../..";
@@ -34,4 +34,13 @@ test("isFile()", () => {
 test("isFolder()", () => {
 	assert(mockVirtualRoot != null);
 	expect(mockVirtualRoot.isFolder()).toBe(true);
+});
+
+test("VirtualDriveConfig enables compression by default", () => {
+	const config = new VirtualDriveConfig();
+	expect(config.saveData).toEqual({
+		enableCompression: true,
+		prefix: "pos-",
+		migrations: [["data", "drive"]],
+	});
 });

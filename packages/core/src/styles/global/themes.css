@@ -65,3 +65,99 @@
 	--taskbar-color: var(--purple-2);
 	--taskbar-menu-color: var(--purple-1);
 }
+
+.Expressive-theme {
+	--foreground-color-0: var(--white-0);
+	--foreground-color-1: var(--white-1);
+	--foreground-color-2: var(--white-2);
+
+	--background-color-0: #2b2638;
+	--background-color-1: #211c2e;
+	--background-color-2: #181424;
+	--background-color-3: #120e1c;
+	--background-color-4: #0a0812;
+
+	--taskbar-color: #1c172b;
+	--taskbar-menu-color: #241e36;
+	--taskbar-button-hover-color: rgba(255, 255, 255, 10%);
+}
+
+.ExpressiveLight-theme {
+	--foreground-color-0: var(--black-3);
+	--foreground-color-1: var(--black-2);
+	--foreground-color-2: var(--black-1);
+
+	--background-color-0: #f3edf7;
+	--background-color-1: #eae3f2;
+	--background-color-2: #e2d9ec;
+	--background-color-3: #d7cbe3;
+	--background-color-4: #c2b0d3;
+
+	--taskbar-color: #e8def8;
+	--taskbar-menu-color: #f3edf7;
+	--taskbar-button-hover-color: rgba(0, 0, 0, 6%);
+}
+
+.CherryLight-theme {
+	--foreground-color-0: var(--black-3);
+	--foreground-color-1: var(--black-2);
+	--foreground-color-2: var(--black-1);
+
+	--background-color-0: #ffebed;
+	--background-color-1: #ffd6da;
+	--background-color-2: #ffb3ba;
+	--background-color-3: #ff8e99;
+	--background-color-4: #ff6877;
+
+	--taskbar-color: #ffd6da;
+	--taskbar-menu-color: #ffebed;
+	--taskbar-button-hover-color: rgba(0, 0, 0, 5%);
+}
+
+.MangoLight-theme {
+	--foreground-color-0: var(--black-3);
+	--foreground-color-1: var(--black-2);
+	--foreground-color-2: var(--black-1);
+
+	--background-color-0: #fff8e5;
+	--background-color-1: #ffeed0;
+	--background-color-2: #ffe2b3;
+	--background-color-3: #ffd594;
+	--background-color-4: #ffc773;
+
+	--taskbar-color: #ffeed0;
+	--taskbar-menu-color: #fff8e5;
+	--taskbar-button-hover-color: rgba(0, 0, 0, 5%);
+}
+
+.AquaLight-theme {
+	--foreground-color-0: var(--black-3);
+	--foreground-color-1: var(--black-2);
+	--foreground-color-2: var(--black-1);
+
+	--background-color-0: #e5fffa;
+	--background-color-1: #ccefe8;
+	--background-color-2: #b2e5db;
+	--background-color-3: #8fdacb;
+	--background-color-4: #66ceb8;
+
+	--taskbar-color: #ccefe8;
+	--taskbar-menu-color: #e5fffa;
+	--taskbar-button-hover-color: rgba(0, 0, 0, 5%);
+}
+
+.GrapeLight-theme {
+	--foreground-color-0: var(--black-3);
+	--foreground-color-1: var(--black-2);
+	--foreground-color-2: var(--black-1);
+
+	--background-color-0: #f4ebff;
+	--background-color-1: #e7d5ff;
+	--background-color-2: #d8bbfb;
+	--background-color-3: #c39af8;
+	--background-color-4: #a970f5;
+
+	--taskbar-color: #e7d5ff;
+	--taskbar-menu-color: #f4ebff;
+	--taskbar-button-hover-color: rgba(0, 0, 0, 5%);
+}
